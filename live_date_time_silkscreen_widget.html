@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Date and Time Widget</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: transparent;
+            font-family: 'Silkscreen', cursive;
+        }
+        .datetime {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
+    </style>
+    <script>
+        function updateTime() {
+            const date = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            const formattedDate = date.toLocaleDateString(undefined, options);
+            const formattedTime = date.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            document.getElementById('datetime').textContent = formattedDate + ' ' + formattedTime;
+        }
+        setInterval(updateTime, 1000);
+        document.addEventListener('DOMContentLoaded', updateTime);
+    </script>
+</head>
+<body>
+    <div class="datetime" id="datetime"></div>
+</body>
+</html>
